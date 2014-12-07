@@ -6,6 +6,9 @@ cask :v1 => 'indesign' do
     def self.install_locale
       'en_US'
     end
+    def self.installerPath
+      "#{self.name}/Install.app/Contents/MacOS/Install"
+    end
   end
 
   url 'http://trials3.adobe.com/AdobeProducts/IDSN/10/osx10/InDesign_10_LS20.dmg',
@@ -15,12 +18,12 @@ cask :v1 => 'indesign' do
 
   homepage 'http://www.adobe.com/products/indesign.html'
   version '10.0.0'
-  #sha256 '08bcdf4f3cb7f438310951fc066734c5f4ac886623aa6dbcad0cd268b0cf6faf'
-  installer :script => "#{Utils.name}/Install.app/Contents/MacOS/Install",
-            :args => ['--mode=silent', "--deploymentFile=/usr/local/Caskroom/indesign/10.0.0/#{Utils.name}/Deployment/#{Utils.install_locale}_Deployment.xml"]
+  sha256 'e68cc10ffd2b20a00cb79fd0c0ee5c6422c79383db6de5d81b82d14df76f0ff5'
+  installer :script => "#{Utils.installerPath}",
+            :args => ['--mode=silent', "--deploymentFile=#{staged_path}/#{Utils.name}/deploy/install.xml"]
 
-  uninstall :script => "#{Utils.name}/Install.app/Contents/MacOS/Install",
-            :args => ['--mode=silent', "--action=uninstall", "--deploymentFile=/usr/local/Caskroom/indesign/10.0.0/#{Utils.name}/Deployment/#{Utils.install_locale}_Deployment.xml"]
+  uninstall :script => "#{Utils.installerPath}",
+            :args => ['--mode=silent', "--action=uninstall", "--deploymentFile=#{staged_path}/#{Utils.name}/deploy/install.xml"]
 
   caveats 'You will need to quit all Adobe applications as well as all browsers for the install to succeed!'
 end
