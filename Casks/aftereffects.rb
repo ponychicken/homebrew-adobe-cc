@@ -1,7 +1,7 @@
 cask :v1 => 'aftereffects' do
   module Utils
     def self.name
-      'Adobe AfterEffects CC 2014'
+      'Adobe After Effects CC 2014'
     end
     def self.install_locale
       'en_US'
@@ -16,14 +16,11 @@ cask :v1 => 'aftereffects' do
         'MM_TRIALS' => '1234'
       }
 
-  homepage 'http://www.adobe.com/products/indesign.html'
+  homepage 'http://www.adobe.com/products/aftereffects.html'
   version '13.0.0'
-  #sha256 '08bcdf4f3cb7f438310951fc066734c5f4ac886623aa6dbcad0cd268b0cf6faf'
-  installer :script => "#{Utils.installerPath}",
-            :args => ['--mode=silent', "--deploymentFile=#{staged_path}/#{Utils.name}/Deployment/#{Utils.install_locale}_Deployment.xml"]
+  sha256 '1923a23b35cc0214335c22b2979e2996d05f2814ced23532b67cd7f458cc2bff'
 
-  uninstall :script => "#{Utils.installerPath}",
-            :args => ['--mode=silent', "--action=uninstall", "--deploymentFile=#{staged_path}/#{Utils.name}/Deployment/#{Utils.install_locale}_Deployment.xml"]
+  installer :manual => "#{self.name}/Install.app"
 
   caveats 'You will need to quit all Adobe applications as well as all browsers for the install to succeed!'
 end
