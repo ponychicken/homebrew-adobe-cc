@@ -20,10 +20,10 @@ cask :v1 => 'illustrator' do
   version '18.0.0'
   sha256 'e79a1f32ad4f3a594733968a42f128c753562fb332100cbdfd5068fa8654c71d'
   installer :script => "#{Utils.installerPath}",
-            :args => ['--mode=silent', "--deploymentFile=#{staged_path}/#{Utils.name}/Deployment/#{Utils.install_locale}_Deployment.xml"]
+            :args => ['--mode=silent', "--deploymentFile=#{staged_path}/#{Utils.name}/Deployment/deployment.xml"]
 
   uninstall :script => "#{Utils.installerPath}",
-            :args => ['--mode=silent', "--action=uninstall", "--deploymentFile=#{staged_path}/#{Utils.name}/Deployment/#{Utils.install_locale}_Deployment.xml"]
+            :args => ['--mode=silent', "--deploymentFile=#{staged_path}/#{Utils.name}/Deployment/uninstall.xml"]
 
   caveats 'You will need to quit all Adobe applications as well as all browsers for the install to succeed!'
 end

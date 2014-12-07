@@ -23,7 +23,7 @@ cask :v1 => 'indesign' do
             :args => ['--mode=silent', "--deploymentFile=#{staged_path}/#{Utils.name}/deploy/install.xml"]
 
   uninstall :script => "#{Utils.installerPath}",
-            :args => ['--mode=silent', "--action=uninstall", "--deploymentFile=#{staged_path}/#{Utils.name}/deploy/install.xml"]
+            :args => ['--mode=silent', "--deploymentFile=#{staged_path}/#{Utils.name}/deploy/remove.xml"]
 
   caveats 'You will need to quit all Adobe applications as well as all browsers for the install to succeed!'
 end
