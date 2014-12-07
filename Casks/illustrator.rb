@@ -18,7 +18,7 @@ cask :v1 => 'illustrator' do
 
   homepage 'http://www.adobe.com/products/illustrator.html'
   version '18.0.0'
-  #sha256 '08bcdf4f3cb7f438310951fc066734c5f4ac886623aa6dbcad0cd268b0cf6faf'
+  sha256 'e79a1f32ad4f3a594733968a42f128c753562fb332100cbdfd5068fa8654c71d'
   installer :script => "#{Utils.installerPath}",
             :args => ['--mode=silent', "--deploymentFile=#{staged_path}/#{Utils.name}/Deployment/#{Utils.install_locale}_Deployment.xml"]
 
